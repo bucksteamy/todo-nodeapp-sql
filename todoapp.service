@@ -1,0 +1,13 @@
+[Service]
+ExecStart=/usr/bin/node app.js
+WorkingDirectory=/opt/todoapp
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=todo-app
+#User=root
+#Group=root
+Environment=NODE_ENV=localhost
+
+[Install]
+WantedBy=multi-user.target
