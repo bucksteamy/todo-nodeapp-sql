@@ -1,5 +1,7 @@
 #This repo sets out to demonstrate how to build a node app on VM scales sets which are connected to an Azure SQL DB over a secure/private connection. 
 
+Steps:
+
 *Create Resource group for Managed Services and Todo-App
 *Create Vnet for MS and Todo-app
 *Peer Vnets
