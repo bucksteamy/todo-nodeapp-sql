@@ -21,10 +21,11 @@ write_files:
       }
 runcmd:
   - service nginx restart
-  - cd "/home/azureuser/"
+  - cd "/home/theadmin"
   - git clone https://github.com/bucksteamy/todo-nodeapp-sql.git
   - mv todo-nodeapp-sql/todoapp.service /etc/systemd/system/
-  - mkdir -p /etc/opt/todoapp ; mv -R todo-nodeapp-sql/nodejs-express4-rest-api/ /opt/todoapp
+  - mkdir -p /etc/opt/todoapp
+  - mv todo-nodeapp-sql/nodejs-express4-rest-api/ /opt/todoapp
   - rm -Rf todo-nodeapp-sql
   - cd /opt/todoapp/
   - npm install
