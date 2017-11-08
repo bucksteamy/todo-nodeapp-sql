@@ -14,12 +14,12 @@ Steps:
         * Configure the node config file for your instance of Azure SQL DB 
     * Configure Cloud Shell in the Azure Portal
     * copy cloud-init.txt to Cloudshell fileshare
-    * ADMIN_USER=""
-      ADMIN_PASSWORD=''
-      RESOURCE_GROUP=""
-      VMSS_NAME=""
-      IMAGE_NAME=""
-      VNET_NAME=""
+    * ADMIN_USER="" \
+      ADMIN_PASSWORD='' \
+      RESOURCE_GROUP="" \
+      VMSS_NAME="" \
+      IMAGE_NAME="" \
+      VNET_NAME="" \
       SUBNET_NAME=""
 
       az vmss create --vnet-name $VNET_NAME \
