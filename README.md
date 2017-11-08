@@ -6,31 +6,29 @@ Steps:
 * Create Vnet for MS and Todo-app
 * Peer Vnets
 * Spin up Azure SQL Server and DB
-    * Add Local IP to firewall
+    * Add vNet Rule
     * Take note of server name, admin, and password
-* Build base Ubuntu 17.0 VM in MS RG
-    * Clone git repo, more node app to /opt, and clean up
-        * git clone https://github.com/bucksteamy/todo-nodeapp-sql.git
+    * hydrate DB via portal with script found in nodejs-express4-rest-api/setup/setup.sql
+* Deploy VMSS
+    * Fork this repo https://github.com/bucksteamy/todo-nodeapp-sql.git
         * Configure the node config file for your instance of Azure SQL DB 
-            * sudo vim todo-nodeapp-sql/nodejs-express4-rest-api/config/default.json 
-        * mkdir -p /etc/opt/todoapp ; sudo mv -R todo-nodeapp-sql/nodejs-express4-rest-api/ /opt/todoapp
-        * sudo mv todo-nodeapp-sql/todoapp.service /etc/systemd/system/
-        * rm -Rf todo-nodeapp-sql
-        * cd /opt/todoapp/
-    * Install node and modules
-        * curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-        * sudo apt-get install -y nodejs
-        * sudo apt-get install -y build-essential
-        * sudo npm install npm@latest -g
-        * sudo npm install
-    * Configure Linux Firewall to allow for node port
-        * sudo iptables -A INPUT -p tcp -m tcp --sport 3000 -j ACCEPT
-        * sudo iptables -A OUTPUT -p tcp -m tcp --dport 3000 -j ACCEPT  
-        * sudo vim /etc/sysctl.conf  
-        * sudo sysctl -p /etc/sysctl.conf
-    * Configure systemd service 
-        * sudo systemctl enable todoapp.service
-        * sudo systemctl start todoapp.service
-        * sudo systemctl status todoapp.service
-        * curl http://localhost:3000/todo
-    
+    * Configure Cloud Shell in the Azure Portal
+    * copy cloud-init.txt to Cloudshell fileshare
+    * ADMIN_USER=""
+      ADMIN_PASSWORD=''
+      RESOURCE_GROUP=""
+      VMSS_NAME=""
+      IMAGE_NAME=""
+      VNET_NAME=""
+      SUBNET_NAME=""
+
+      az vmss create --vnet-name $VNET_NAME \
+      --subnet $SUBNET_NAME \
+      --admin-username $ADMIN_USER \
+      --image UbuntuLTS \
+      --upgrade-policy-mode automatic \
+      --custom-data ~/clouddrive/cloud-init.txt \
+      -n $VMSS_NAME \
+      -g $RESOURCE_GROUP \
+      --generate-ssh-keys
+            
