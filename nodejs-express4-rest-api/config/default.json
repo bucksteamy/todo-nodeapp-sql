@@ -3,6 +3,6 @@
         "server"  : "sqldbtodonje.database.windows.net",
         "userName": "theadmin",
         "password": "YANKee$718!!",
-        "options": { "encrypt": true, "database": "sqldb-todo" }
+        "options": { "encrypt": true, "database": "todo" }
     }
 }

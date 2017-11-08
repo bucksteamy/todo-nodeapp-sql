@@ -1,5 +1,5 @@
 [Service]
-ExecStart=/usr/bin/node app.js
+ExecStart=/usr/bin/nodejs app.js
 WorkingDirectory=/opt/todoapp
 Restart=always
 StandardOutput=syslog
