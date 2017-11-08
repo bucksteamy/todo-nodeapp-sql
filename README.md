@@ -13,7 +13,7 @@ Steps:
         * git clone https://github.com/bucksteamy/todo-nodeapp-sql.git
         * Configure the node config file for your instance of Azure SQL DB 
             * sudo vim todo-nodeapp-sql/nodejs-express4-rest-api/config/default.json 
-        * sudo cp -R todo-nodeapp-sql/nodejs-express4-rest-api/ /opt/todoapp
+        * mkdir -p /etc/opt/todoapp ; sudo mv -R todo-nodeapp-sql/nodejs-express4-rest-api/ /opt/todoapp
         * sudo mv todo-nodeapp-sql/todoapp.service /etc/systemd/system/
         * rm -Rf todo-nodeapp-sql
         * cd /opt/todoapp/
@@ -25,7 +25,9 @@ Steps:
         * sudo npm install
     * Configure Linux Firewall to allow for node port
         * sudo iptables -A INPUT -p tcp -m tcp --sport 3000 -j ACCEPT
-        * sudo iptables -A OUTPUT -p tcp -m tcp --dport 3000 -j ACCEPT    
+        * sudo iptables -A OUTPUT -p tcp -m tcp --dport 3000 -j ACCEPT  
+        * sudo vim /etc/sysctl.conf  
+        * sudo sysctl -p /etc/sysctl.conf
     * Configure systemd service 
         * sudo systemctl enable todoapp.service
         * sudo systemctl start todoapp.service

@@ -1,0 +1,32 @@
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+write_files:
+  - owner: www-data:www-data
+  - path: /etc/nginx/sites-available/default
+    content: |
+      server {
+        listen 80;
+        location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection keep-alive;
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+        }
+      }
+runcmd:
+  - service nginx restart
+  - cd "/home/azureuser/"
+  - git clone https://github.com/bucksteamy/todo-nodeapp-sql.git
+  - mv todo-nodeapp-sql/todoapp.service /etc/systemd/system/
+  - mkdir -p /etc/opt/todoapp ; mv -R todo-nodeapp-sql/nodejs-express4-rest-api/ /opt/todoapp
+  - rm -Rf todo-nodeapp-sql
+  - cd /opt/todoapp/
+  - npm install
+  - systemctl enable todoapp.service
+  - systemctl start todoapp.service
