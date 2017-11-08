@@ -2,7 +2,7 @@
     "connection":{
         "server"  : "todonje.database.windows.net",
         "userName": "theadmin",
-        "password": "YANKee$718!!",
+        "password": "Password12!!",
         "options": { "encrypt": true, "database": "todo" }
     }
 }
