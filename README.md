@@ -31,4 +31,5 @@ Steps:
       -n $VMSS_NAME \
       -g $RESOURCE_GROUP \
       --generate-ssh-keys
+* Configure healthprobe and load balance rule on the Azure Load Balancer created at VMSS deployment time
             
