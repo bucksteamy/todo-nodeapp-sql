@@ -14,7 +14,9 @@ Steps:
         * Configure the node config file for your instance of Azure SQL DB 
     * Configure Cloud Shell in the Azure Portal
     * copy cloud-init.txt to Cloudshell fileshare
-    * ADMIN_USER="" \
+    * 
+    ```bash
+    ADMIN_USER="" \
       ADMIN_PASSWORD='' \
       RESOURCE_GROUP="" \
       VMSS_NAME="" \
@@ -31,5 +33,6 @@ Steps:
       -n $VMSS_NAME \
       -g $RESOURCE_GROUP \
       --generate-ssh-keys
+     ```
 * Configure healthprobe and load balance rule on the Azure Load Balancer created at VMSS deployment time
             
