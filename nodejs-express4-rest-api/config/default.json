@@ -1,6 +1,6 @@
 {
     "connection":{
-        "server"  : "sqldbtodonje.database.windows.net",
+        "server"  : "todonje.database.windows.net",
         "userName": "theadmin",
         "password": "YANKee$718!!",
         "options": { "encrypt": true, "database": "todo" }
